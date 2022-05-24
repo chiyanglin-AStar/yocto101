@@ -2,3 +2,13 @@
 //  more courses : www.codingcoffee.org
 
 gcc ex7-2.c -lm 
+
+g++ ex7-2.cpp 
+
+rm a.out 
+
+ls 
+
+ls *.c 
+
+ls *.cpp
