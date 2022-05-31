@@ -12,3 +12,8 @@ ls
 ls *.c 
 
 ls *.cpp
+
+git status 
+git add .
+git commit -m "update"
+git push
