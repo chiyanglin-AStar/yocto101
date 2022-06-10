@@ -1,0 +1,37 @@
+
+
+# file management commands
+
+ls 
+
+mkdir 
+
+cd 
+
+rm *.txt
+
+rm -rf *
+
+rmdir 
+
+echo "hello world" > hello1.txt
+
+cp hello1.txt hello2.txt
+
+# install useful utils 
+
+sudo apt-get install tree
+
+sudo apt-get install net-tools
+
+sudo apt-get install iputils-ping -y
+
+# git commands
+
+git status 
+
+git add . 
+
+git commit -m "update"
+
+git push 
