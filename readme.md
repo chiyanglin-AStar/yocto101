@@ -44,6 +44,10 @@ cp -v /boot/config-$(uname -r) .config   // this have issue
 sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
 sudo apt-get install gcc-arm-linux-gnueabi u-boot-tools lzop 
 
+apt-get update && apt-get install -yy bc build-essential git software-properties-common libssl-dev libelf-dev bison flex iputils-ping gcc-arm-linux-gnueabi u-boot-tools lzop 
+
+apt-get update && apt-get install -yy bc build-essential git gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi libssl-dev bison flex u-boot-tools
+
 ## arm architecture kernel build example 
 export ARCH=arm
 export CROSS_COMPILE=arm-linux-gnueabi-
