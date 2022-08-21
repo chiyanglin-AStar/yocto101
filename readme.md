@@ -50,8 +50,11 @@ apt-get update && apt-get install -yy bc build-essential git gcc-arm-linux-gnuea
 
 ## arm architecture kernel build example 
 export ARCH=arm
+
 export CROSS_COMPILE=arm-linux-gnueabi-
+
 make aspeed_g5_defconfig
+
 make -j $(nproc)
 
 ## x86 architecture kernel build example 
