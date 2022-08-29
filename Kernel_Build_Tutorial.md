@@ -32,8 +32,6 @@ gpg --verify linux-5.16.9.tar.sign
 
 tar xvf linux-5.16.9.tar
 
-
-
 cp -r linux-5.16.9 linux-5.16.9_arm
 
 mv    linux-5.16.9 linux-5.16.9_arm
@@ -45,31 +43,35 @@ cp -v /boot/config-$(uname -r) .config   // this have issue
 ## install related package and compiler kernel 
 
 sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
+
 sudo apt-get install gcc-arm-linux-gnueabi u-boot-tools lzop 
 
-
-
 ## x86_64 architecture kernel build example 
+
 make clean
+
 make mrproper
+
 make x86_64_defconfig
+
 make -j $(nproc)
 
 ## i386 architecture kernel build example 
+
 make clean
+
 make mrproper
+
 make i386_defconfig
-make -j $(nproc)
 
-## ia64 architecture kernel build example 
-make clean
-make mrproper
-make generic_defconfig
 make -j $(nproc)
-
 
 ## arm architecture kernel build example use ASpeed 2500 as target platform
+
 export ARCH=arm
+
 export CROSS_COMPILE=arm-linux-gnueabi-
+
 make aspeed_g5_defconfig
+
 make -j $(nproc)

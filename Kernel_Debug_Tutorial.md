@@ -31,3 +31,15 @@ echo helloworld | cpio -o --format=newc > rootfs
 
 qemu-system-x86_64 -kernel ./arch/x86/boot/bzImage -initrd ./rootfs -append "root=/dev/ram rdinit=/helloworld" -smp 2  -s -S -nographic
 
+
+#  gdb to connect with kernel 
+
+gdb ./vmLinux
+
+## Debug the following
+
+target remote:1234
+
+b start_kernel
+
+c
