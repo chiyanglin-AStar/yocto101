@@ -1,3 +1,6 @@
+#  Kernel Debug Tutorial 
+ref : https://programming.vip/docs/teach-you-how-to-debug-linux-kernel-with-vs-code-qemu-gdb.html
+
 #  check gcc and gdb in gitpod 
 gcc -v 
 gdb -v 
@@ -39,7 +42,11 @@ gdb ./vmLinux
 ## Debug the following
 
 target remote:1234
-
 b start_kernel
 
 c
+
+## Gitpod VScode have been installed 
+
+ref : https://www.gitpod.io/docs/languages/cpp 
+
