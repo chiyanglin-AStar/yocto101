@@ -6,7 +6,7 @@ gcc -v
 gdb -v 
 
 #   install qemu-system-arm qemu-system-x86
-sudo apt install qemu 
+sudo apt install qemu cpio qemu-system qemu-system-i386
 
 nano hello.c 
 
@@ -25,8 +25,6 @@ int main()
 ### ---------------------------------
 
 touch hello.c
-
-sudo apt install cpio qemu-system qemu-system-i386
 
 gcc --static -o helloworld hello.c
 
