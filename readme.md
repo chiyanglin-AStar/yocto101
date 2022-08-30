@@ -1,64 +1,39 @@
-#  This is CodingCoffee Kernel Build Tutorial
-##   more courses : www.codingcoffee.org
+#  This is CodingCoffee Yocto 101 Tutorial
 
-#  Kernel Build Tutorial 
-ref : https://www.cyberciti.biz/tips/compiling-linux-kernel-26.html
+##  git clone poky
 
-ref : https://shenki.github.io/Booting-an-OpenBMC-kernel/
+git clone git://git.yoctoproject.org/poky -b dunfell
 
-Linux kernel formal site :  https://www.kernel.org/ 
+git clone git://git.yoctoproject.org/poky -b kirkstone
 
-##  Get specific kernel version example 
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.16.9.tar.xz  
+git clone git://git.yoctoproject.org/poky -b master
 
 
-## uncompress kernel source code 
-unxz -v linux-5.16.9.tar.xz
+## git clone openembedded 
 
-## use gpg verification kernel source code 
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.16.9.tar.sign
+cd poky 
 
-gpg --verify linux-5.16.9.tar.sign
+git clone https://git.openembedded.org/meta-openembedded -b dunfell
 
-example:  
-gpg: assuming signed data in 'linux-5.16.9.tar'
+git clone https://git.openembedded.org/meta-openembedded -b kirkstone
 
-gpg: Signature made Fri 11 Feb 2022 08:27:25 AM UTC
+git clone https://git.openembedded.org/meta-openembedded -b master
 
-gpg:                using RSA key 647F28654894E3BD457199BE38DBBDC86092693E
+##  git clone Intel layer 
 
-gpg: Can't check signature: No public key
+git clone https://git.yoctoproject.org/meta-intel -b dunfell
 
-gpg --recv-keys xxxxxxxxxxx  (from gpg --verify linux-5.16.9.tar.sign)
+git clone https://git.yoctoproject.org/meta-intel -b kirkstone
 
+git clone https://git.yoctoproject.org/meta-intel -b master
 
-gpg --verify linux-5.16.9.tar.sign
+##  start yocto build 
+source oe-init-build-env
 
-##  untar Linux Kernel Source files  
+nano ./conf/local.conf 
 
-tar xvf linux-5.16.9.tar
+###  modify machine 
 
-cd linux-5.16.9
+MACHINE ??= "qemux86-64"  ==>
 
-cp -v /boot/config-$(uname -r) .config   // this have issue 
-
-## install related package and compiler kernel 
-
-sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev
-
-sudo apt-get install gcc-arm-linux-gnueabi u-boot-tools lzop 
-
-apt-get update && apt-get install -yy bc build-essential git software-properties-common libssl-dev libelf-dev bison flex iputils-ping gcc-arm-linux-gnueabi u-boot-tools lzop 
-
-apt-get update && apt-get install -yy bc build-essential git gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi libssl-dev bison flex u-boot-tools
-
-## arm architecture kernel build example 
-export ARCH=arm
-
-export CROSS_COMPILE=arm-linux-gnueabi-
-
-make aspeed_g5_defconfig
-
-make -j $(nproc)
-
-## x86 architecture kernel build example 
+MACHINE ??= "generic86"
