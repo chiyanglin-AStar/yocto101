@@ -24,6 +24,23 @@ git clone https://git.openembedded.org/meta-openembedded -b kirkstone
 
 git clone https://git.openembedded.org/meta-openembedded -b master
 
+
+##  start yocto build , build qemux86-64
+source oe-init-build-env
+
+bitbake core-image-minimal   
+
+##  run image 
+runqemu tmp/deploy/images/qemux86-64/bzImage-qemux86-64.bin tmp/deploy/images/qemux86-64/core-image-sato-qemux86-64.ext4
+
+###  modify machine and start build but not recomment in gitpod , gitpod free version have time limit 
+
+nano ./conf/local.conf 
+
+MACHINE ??= "qemux86-64"  ==>
+
+MACHINE ??= "generic86"
+
 ##  git clone Intel layer 
 
 git clone https://git.yoctoproject.org/meta-intel -b dunfell
@@ -32,13 +49,42 @@ git clone https://git.yoctoproject.org/meta-intel -b kirkstone
 
 git clone https://git.yoctoproject.org/meta-intel -b master
 
-##  start yocto build 
-source oe-init-build-env
-
-nano ./conf/local.conf 
-
-###  modify machine 
+###  modify machine and start build but not recomment in gitpod , gitpod free version have time limit 
 
 MACHINE ??= "qemux86-64"  ==>
 
-MACHINE ??= "generic86"
+MACHINE ??= "intel-core2-32"
+
+bitbake core-image-minimal
+
+##  git clone raspberry pi layer 
+
+git clone https://git.yoctoproject.org/meta-raspberrypi -b dunfell
+
+git clone https://git.yoctoproject.org/meta-raspberrypi -b kirkstone
+
+git clone https://git.yoctoproject.org/meta-raspberrypi -b master
+
+###  add intel layer and modify machine and start build but not recomment in gitpod , gitpod free version have time limit 
+
+nano ./conf/bblayer.conf 
+
+BBLAYERS ?= " \
+  ${TOPDIR}/../sources/poky/meta \
+  ${TOPDIR}/../sources/poky/meta-poky \
+  ${TOPDIR}/../sources/poky/meta-yocto-bsp \
+  ${TOPDIR}/../sources/meta-raspberrypi \
+  ${TOPDIR}/../sources/meta-openembedded/meta-oe \
+  ${TOPDIR}/../sources/meta-openembedded/meta-multimedia \
+  ${TOPDIR}/../sources/meta-openembedded/meta-networking \
+  ${TOPDIR}/../sources/meta-openembedded/meta-python \
+  "
+
+nano ./conf/local.conf 
+
+MACHINE ??= "qemux86-64"  ==>
+
+MACHINE ??= "raspberrypi4"
+
+bitbake core-image-base
+
