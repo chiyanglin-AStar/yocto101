@@ -31,7 +31,7 @@ source oe-init-build-env
 bitbake core-image-minimal   
 
 ##  run image 
-runqemu tmp/deploy/images/qemux86-64/bzImage-qemux86-64.bin tmp/deploy/images/qemux86-64/core-image-sato-qemux86-64.ext4
+runqemu tmp/deploy/images/qemux86-64/bzImage-qemux86-64.bin tmp/deploy/images/qemux86-64/core-image-minimal-qemux86-64.ext4
 
 ###  modify machine and start build but not recomment in gitpod , gitpod free version have time limit 
 
