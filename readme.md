@@ -45,6 +45,10 @@ MACHINE ??= "qemux86-64"  ==>
 
 MACHINE ??= "generic86"
 
+####  use qemu to test image 
+
+qemu-system-x86_64 -M pc -kernel bzImage -nographic -hda core-image-minimal-genericx86.ext4 -netdev user,id=network0 -device e1000,netdev=network0 -nographic -append "root=/dev/sda console=ttyS0"
+
 ##  git clone Intel layer 
 
 git clone https://git.yoctoproject.org/meta-intel -b dunfell
