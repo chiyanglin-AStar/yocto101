@@ -45,7 +45,9 @@ MACHINE ??= "qemux86-64"  ==>
 
 MACHINE ??= "generic86"
 
-### add  IMAGE_FSTYPES += "ext4 iso"  into ./conf/local.conf
+### add 
+### IMAGE_FSTYPES += "ext4 iso"  
+### into ./conf/local.conf
 
 ####  use qemu to test image 
 
