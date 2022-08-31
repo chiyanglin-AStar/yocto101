@@ -45,6 +45,8 @@ MACHINE ??= "qemux86-64"  ==>
 
 MACHINE ??= "generic86"
 
+### add  IMAGE_FSTYPES += "ext4 iso"  into ./conf/local.conf
+
 ####  use qemu to test image 
 
 qemu-system-x86_64 -boot d -cdrom ./tmp/deploy/images/genericx86-64/core-image-minimal-genericx86-64.iso -m 512 -nographic
