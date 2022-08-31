@@ -47,7 +47,7 @@ MACHINE ??= "generic86"
 
 ####  use qemu to test image 
 
-qemu-system-x86_64 -M pc -kernel bzImage -nographic -hda core-image-minimal-genericx86.ext4 -netdev user,id=network0 -device e1000,netdev=network0 -nographic -append "root=/dev/sda console=ttyS0"
+qemu-system-x86_64 -boot d -cdrom ./tmp/deploy/images/genericx86-64/core-image-minimal-genericx86-64.iso -m 512 -nographic
 
 ##  git clone Intel layer 
 
