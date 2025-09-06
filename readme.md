@@ -6,15 +6,20 @@ sudo apt update && sudo apt-get -y install libsdl1.2-dev xterm sed cvs subversio
 
 
 ##  git clone poky
+[yocto release note](https://www.yoctoproject.org/development/releases/)
 
 git clone git://git.yoctoproject.org/poky -b dunfell
 
 git clone git://git.yoctoproject.org/poky -b kirkstone
 
+git clone git://git.yoctoproject.org/poky -b scarthgap
+
+git clone git://git.yoctoproject.org/poky -b walnascar
+
 git clone git://git.yoctoproject.org/poky -b master
 
 
-## git clone openembedded 
+## git clone openembedded ,note sync version with poky
 
 cd poky 
 
@@ -53,7 +58,7 @@ MACHINE ??= "generic86"
 
 qemu-system-x86_64 -boot d -cdrom ./tmp/deploy/images/genericx86-64/core-image-minimal-genericx86-64.iso -m 512 -nographic
 
-##  git clone Intel layer 
+##  git clone Intel layer ,note sync version with poky
 
 git clone https://git.yoctoproject.org/meta-intel -b dunfell
 
@@ -69,7 +74,8 @@ MACHINE ??= "intel-core2-32"
 
 bitbake core-image-minimal
 
-##  git clone raspberry pi layer 
+##  git clone raspberry pi layer ,note sync version with poky
+
 
 git clone https://git.yoctoproject.org/meta-raspberrypi -b dunfell
 
